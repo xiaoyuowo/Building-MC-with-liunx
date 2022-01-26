@@ -167,7 +167,7 @@ java -jar 你服务端的名字
 #### 编码问题
 在Windows处理过后的客户端可能需要一定的转码处理因为liunx使用的utf-8编码而Windows 使用的为GBK所以说请在开始前进行一定的转码处理后上传到liunx
 - ### 了解开服的指令和screen
-在此我们需要了解一下liunx的基础指令
+#### 在此我们需要了解一下liunx的基础指令
 ```
 打开文件夹 cd
 cd /mcsever (这里可以看到我们上传的文件夹名字为mcsever)
@@ -180,10 +180,33 @@ rm -rf mcsever 这里把客户端删除了
 ```
 >因为篇幅有限所以说只介绍了一些开服可能常用的指令，需要系统了解请进行百度
 
-screen
+#### screen
+可能有些小伙伴意识到如果我们关闭Xshell或者putty的话服务端很快就会被关闭，那么有没有什么可以让我们关闭Xshell或者putty同时服务端继续正常运行的东西的呢www那么当然有了那就是screen！
 
+那么怎么使用呢很简单我们需要先安装一下www
 
+```
+sudo apt install screen 
+sudo yum install screen
+这个和之前安装Java一样
+有些镜像可能已经安装好了screen
+```
 
+```
+screen java -jar 你服务端的名字.jar 
+输入这个指令就可以直接进入到screen
+之后就可以直接关闭掉Xshell 或者putty了
+那么怎么回去呢
+root@AanPdN1001989:~# screen -ls
+There is a screen on:
+	1669.pts-2.AanPdN1001989	(01/26/2022 02:38:24 PM)	(Detached)
+1 Socket in /run/screen/S-root.
+输入这个指令可以看到我们的服务器已经在运行了
+那么我们输入screen -r 
+或者screen -x
+即可恢复
+```
+具体如果想了解的话可以点击这个链接[screen 命令](https://www.runoob.com/linux/linux-comm-screen.html)
 - ### 在让人蛋疼的命令行里面快速的修改插件的配置
 - ### 了解crontab 进行每日的服务器备份
 - ### 一个简单且常用的开服脚本
