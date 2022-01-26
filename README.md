@@ -80,6 +80,65 @@ BGP多线：ex.example.com:端口
 >>欸嘿嘿嘿这个之后在写啦www
 - ### 配置java环境
 
+#### 通过apt或者yum安装
+
+安装java 有一个超级快的指令,为了方便所以说就直接写在文章的开头了
+我们先输入
+Ubuntu :
+```
+apt update
+sudo apt install openjdk(之后的内容就交给自动补全了！狂啊按tab就会告诉你可以安装什么版本了哦~)
+一般的话
+openjdk-11-jdk是这样的格式
+可以说很显而易见了
+11代表版本
+有些情况下会要求输入密码
+根据提示输入y即可安装Java了哦wwww
+```
+CentOS :
+```
+yum update
+sudo yum install openjdk(之后的内容就交给自动补全了！)
+有些情况下会要求输入密码
+根据提示输入y即可安装Java了哦wwww
+```
+之后记得输入一下java -version看一下安装上了没有哦~
+
+
+#### 手动安装www
+
+~~我说既然知道apt安装方法就用上面的方法啊！~~
+首先我们进入到[java的下载网站](https://www.oracle.com/java/technologies/downloads/#java11)
+在下方选择你需要的java版本之后
+
+下载到本机后通过FTP软件上传到你的服务器
+
+上传后我们输入ls指令查看是否上传成功如果成功的话应该会看到这样的内容
+```
+root@AanPdN1001989:~# ls
+jdk-11.0.14_linux-x64_bin.tar.gz
+我们进行文件的解压操作
+root@AanPdN1001989:~# tar -xvf jdk-11.0.14_linux-x64_bin.tar.gz  -C  /usr/local/
+这里我们把java解压到了/usr/local的目录下
+
+之后进行环境的配置
+打开文件
+如果你不知道vim的用法请点击这个链接:https://www.runoob.com/linux/linux-vim.html
+sudo vim /etc/profile
+# 设置环境变量 在文件内添加一下内容
+JAVA_HOME=/usr/local/jdk-xxxx (注意请到Java解压的文件夹下查看jdk后的内容在这里)
+CLASSPATH=.:$JAVA_HOME/lib.tools.jar
+PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME CLASSPATH PATH
+重新加载配置文件
+root@AanPdN1001989:~# source  /etc/profile
+
+root@AanPdN1001989:~# java -version
+java version "11.0.14" 2022-01-18 LTS
+Java(TM) SE Runtime Environment 18.9 (build 11.0.14+8-LTS-263)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.14+8-LTS-263, mixed mode
+```
+安装完成wwww至此Java环境配置已经完成了www
 - ### 在本地处理好你的liunx服务端
 - ### 上传
 - ### 了解开服的指令和screen
