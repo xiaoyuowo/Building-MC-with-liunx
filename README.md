@@ -139,9 +139,16 @@ Java(TM) SE Runtime Environment 18.9 (build 11.0.14+8-LTS-263)
 Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.14+8-LTS-263, mixed mode
 ```
 安装完成wwww至此Java环境配置已经完成了www
-- ### 在本地处理好你的liunx服务端
-- ### 上传
+- ### 在本地处理好你的liunx服务端并上传
+#### 首先选择一个服务端
+这里假设你已经了解一部分处理服务端并且会整合服务端了如果你不会的话[这里推荐这篇教程](https://mhy278.gitee.io/minecraftserverhostguidehtml/First.html)
+
+在此部分讲解一下开服可能会遇到的问题
+#### 编码问题
+在Windows处理过后的客户端可能需要一定的转码处理因为liunx使用的utf-8编码而Windows 使用的为GBK所以说请在开始前进行一定的转码处理后上传到liunx
+好像没有什么好讲的了。。。。。
 - ### 了解开服的指令和screen
+  
 - ### 在让人蛋疼的命令行里面快速的修改插件的配置
 - ### 了解crontab 进行每日的服务器备份
 - ### 一个简单且常用的开服脚本
