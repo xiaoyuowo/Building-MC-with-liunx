@@ -208,12 +208,81 @@ There is a screen on:
 ```
 具体如果想了解的话可以点击这个链接[screen 命令](https://www.runoob.com/linux/linux-comm-screen.html)
 - ### 在让人蛋疼的命令行里面快速的修改插件的配置
+如果我想更改插件的设置或者在里面修改一些文件要怎么办
+  1. 通过ftp直接导出到本地通过notepad 或者 vscode进行直接的更改
+  2. 通过liunx自带的vim进行修改4
+      这里通过修改server.properties文件进行演示
+   ```
+   进入到服务端文件夹内
+   root@AanPdN1001989:~/mcsever# vim server.properties 
+   ```
+   我们可以看到这样的界面
+   ![vim界面](image/8.png)
+   那么我们要怎么进行编辑呢？
+   我们输入一个"i"进入到编辑模式
+   ![vim编辑模式](image/9.png)
+   
+   可以看到最下方已经有所改变了那么我们修改端口号为233
+
+   按 ESC键
+
+   之后输入:wq保存
+
+   如果有想深入了解的话[vim教程](https://www.runoob.com/linux/linux-vim.html)
+
 - ### 了解crontab 进行每日的服务器备份
+
+- corntab是什么？
+
+Linux crontab是用来定期执行程序的命令。
+
+当安装完成操作系统之后，默认便会启动此任务调度命令。
+
+```
+crontab的时间表示方式
+*    *    *    *    *
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)
+|    |    |    +---------- 月份 (1 - 12) 
+|    |    +--------------- 一个月中的第几天 (1 - 31)
+|    +-------------------- 小时 (0 - 23)
++------------------------- 分钟 (0 - 59)
+
+如果我们想每天运行备份脚本的话我们就这样写
+0 0 * * * /root/backup
+
+我们输入crontab- e
+0 0 * * * /root/backup(注意这个请写绝对目录)
+把这个写到文件里面
+保存退出
+```
+![crontab图片](image/10.png)
+
+一个简单的备份脚本
+```
+#!/bin/sh
+
+. /etc/profile
+. ~/.bash_profile
+#请把备份的目录换到需要的目录下面
+rm -rf /root/backup.tar.gz            
+tar czvf /root/backup.tar.gz  /root/mcsever/
+```
+
 - ### 一个简单且常用的开服脚本
+```
+#!/bin/sh
+#请注意Xmx 和Xms后面的内存请根据自己服务器的内存自行调整。。
+java -Xms1G -Xmx2G -jar /root/你客户端名字.jar
+``` 
+
 - ### 安装mysql 或者搞个docker？
 - ### 如果你恰巧有域名的话。。。。
 - ### 遇到困难不要怕，面向百度求助
 ## 3.编者的碎碎念www
+如果本篇教程可以帮助到你的话是在好不过了,之后我会在有空的时候继续去把后面的坑填掉的,如果有什么建议欢迎在评论区留言wwww
+
 
 
 [//] 给我自己看的 记得说一下文件的基础操作
